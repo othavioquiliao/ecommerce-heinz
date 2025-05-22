@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/sonner";
+
 import {
   Geist,
   Geist_Mono,
@@ -45,6 +47,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifKhitanSmallScript.variable} ${martianMono.variable} antialiased`}
       >
         {children}
+        <Toaster theme="light" richColors />
       </body>
     </html>
   );
