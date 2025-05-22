@@ -2,13 +2,14 @@
 
 import { ProductImageGallery } from "@/app/produto/_components/product-image-gallery";
 import { ProductInfo } from "@/app/produto/_components/product-info";
-import { VariantSelector } from "@/app/produto/_components/variant-selector";
+import { VariantSelector } from "@/app/produto/_components/selector-type-size";
 import { QuantitySelector } from "@/app/produto/_components/quantity-selector";
 import { DeliveryChecker } from "@/app/produto/_components/delivery-checker";
 import { AddToCartSection } from "@/app/produto/_components/add-to-cart-section";
 import { useProductVariants } from "@/app/produto/_components/hooks/use-product-variants";
 import { useCart } from "@/app/produto/_components/hooks/use-cart";
 import VarietySelector from "@/app/produto/_components/variety";
+// import { DebugPersistentState } from "@/app/produto/_components/debug-persistent-state";
 export default function ProductPage() {
   const {
     selectedProductId,
@@ -17,9 +18,12 @@ export default function ProductPage() {
     currentImages,
     currentPrice,
     quantity,
+    imageIndex,
     handleProductChange,
     handleVariantChange,
     handleQuantityChange,
+    handleImageChange,
+    isLoaded,
   } = useProductVariants();
 
   const { handleAddToCart: addToCart } = useCart();
@@ -40,10 +44,14 @@ export default function ProductPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-xl shadow-sm p-4 md:p-8">
           {/* Sessao das imagens do produto */}
-          <ProductImageGallery images={currentImages} />
+          <ProductImageGallery
+            images={currentImages}
+            imageIndex={imageIndex}
+            onImageChange={handleImageChange}
+          />
 
           {/* Sessao das informacoes do produto */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <ProductInfo
               name={currentProduct.name}
               price={currentPrice}
@@ -52,14 +60,14 @@ export default function ProductPage() {
               reviews={currentProduct.reviews}
             />
 
-            <div className="space-y-6 pt-4 border-t border-gray-100">
+            <div className="space-y-4 pt-4 border-t border-gray-100">
               {/* Selecionador de variedade */}
               <VarietySelector
                 selectedValue={selectedProductId}
                 onChange={handleProductChange}
               />
 
-              {/* Selecionador de variantes */}
+              {/* Selecionador de tamanho e tipo */}
               {Object.entries(currentProduct.variants).map(
                 ([category, options]) => (
                   <VariantSelector
@@ -97,6 +105,9 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+
+      {/* Debug Component  */}
+      {/* <DebugPersistentState /> */}
     </div>
   );
 }

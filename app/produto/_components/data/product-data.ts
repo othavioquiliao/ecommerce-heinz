@@ -43,7 +43,7 @@ export const productData: Product = [
     tamanho: ["215g", "390g", "400g"],
     preco: [13.99, 14.49, 15.99],
     descricao:
-      "A Maionese Heinz Tradicional é cremosa, saborosa e contém ovos caipiras, que dão a ela um sabor inigualável",
+      "A Maionese Heinz é cremosa, saborosa e contém ovos caipiras, que dão a ela um sabor inigualável.",
     imagens: {
       maionese215: [
         "/img/maionese/215.jpg",
@@ -78,7 +78,7 @@ export const productData: Product = [
     tamanho: ["200g", "255g"],
     preco: [15.99, 16.99],
     descricao:
-      "A Mostarda Heinz Tradicional é cremosa, saborosa e contém ovos caipiras, que dão a ela um sabor inigualável",
+      "A Mostarda Heinz é intensa e tem aquele delicioso sabor tradicional da mostarda. Produzida com grãos de mostarda de verdade e com 6 ingredientes de qualidade.",
     imagens: {
       mostarda200: [
         "/img/mostarda/200.jpg",

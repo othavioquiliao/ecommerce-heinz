@@ -1,78 +1,104 @@
 import { useState, useMemo, useEffect } from "react";
-import type { ProductVariants, ProductItem } from "../types";
+import type { ProductItem } from "../types";
 import {
-  productData,
   getImagesBySize,
   getPriceBySize,
   getProductById,
 } from "../data/product-data";
+import { useSimplePersistent } from "./use-simple-persistent";
 
-// Isso aqui e para fazer o mock das variantes do produto
 export const useProductVariants = () => {
-  const [selectedProductId, setSelectedProductId] = useState<string>("1");
-  const [selectedVariants, setSelectedVariants] = useState<ProductVariants>({
-    tamanho: "",
-    tipo: "",
-  });
-  const [quantity, setQuantity] = useState<number>(1);
+  const { state, updateState, isLoaded } = useSimplePersistent();
   const [currentImages, setCurrentImages] = useState<string[]>([]);
 
-  // Obtém o produto atual baseado no ID selecionado
+  // Obtém o produto atual
   const currentProduct = useMemo(() => {
-    return getProductById(selectedProductId);
-  }, [selectedProductId]);
+    return getProductById(state.productId);
+  }, [state.productId]);
 
-  // Inicializa as variantes quando o produto muda
+  // Inicializa valores padrão apenas na primeira carga
   useEffect(() => {
-    if (currentProduct) {
-      setSelectedVariants({
-        tamanho: currentProduct.variants.tamanho[0] || "",
-        tipo: currentProduct.variants.tipo[0] || "",
+    if (isLoaded && currentProduct) {
+      const needsInit = !state.variants.tamanho || !state.variants.tipo;
+
+      if (needsInit) {
+        updateState({
+          variants: {
+            tamanho: currentProduct.variants.tamanho[0] || "",
+            tipo: currentProduct.variants.tipo[0] || "",
+          },
+        });
+      }
+    }
+  }, [isLoaded]);
+
+  // Atualiza imagens quando produto ou tamanho muda
+  useEffect(() => {
+    if (currentProduct && state.variants.tamanho) {
+      const images = getImagesBySize(state.productId, state.variants.tamanho);
+      setCurrentImages(images);
+    } else if (currentProduct) {
+      // Fallback para primeiro tamanho
+      const firstSize = currentProduct.variants.tamanho[0];
+      if (firstSize) {
+        const images = getImagesBySize(state.productId, firstSize);
+        setCurrentImages(images);
+      }
+    }
+  }, [state.productId, state.variants.tamanho, currentProduct]);
+
+  // Obtém preço atual
+  const currentPrice = useMemo(() => {
+    if (!currentProduct || !state.variants.tamanho) return 0;
+    return getPriceBySize(state.productId, state.variants.tamanho);
+  }, [state.productId, state.variants.tamanho, currentProduct]);
+
+  // Handlers
+  const handleProductChange = (productId: string) => {
+    // Busca o novo produto para pegar as variantes disponíveis
+    const newProduct = getProductById(productId);
+    if (newProduct) {
+      // Automaticamente seleciona o primeiro tamanho e tipo disponíveis
+      updateState({
+        productId,
+        variants: {
+          tamanho: newProduct.variants.tamanho[0] || "",
+          tipo: newProduct.variants.tipo[0] || "",
+        },
+        imageIndex: 0, // Reseta para primeira imagem
       });
     }
-  }, [currentProduct]);
-
-  // Obtém o preço atual baseado no tamanho selecionado
-  const currentPrice = useMemo(() => {
-    if (!currentProduct || !selectedVariants.tamanho) return 0;
-    return getPriceBySize(selectedProductId, selectedVariants.tamanho);
-  }, [selectedProductId, selectedVariants.tamanho, currentProduct]);
-
-  // Atualiza as imagens quando o produto ou tamanho muda
-  useEffect(() => {
-    if (currentProduct && selectedVariants.tamanho) {
-      const images = getImagesBySize(
-        selectedProductId,
-        selectedVariants.tamanho
-      );
-      setCurrentImages(images);
-    }
-  }, [selectedProductId, selectedVariants.tamanho, currentProduct]);
-
-  const handleProductChange = (productId: string) => {
-    setSelectedProductId(productId);
   };
 
   const handleVariantChange = (category: string, value: string) => {
-    setSelectedVariants((prev) => ({
-      ...prev,
-      [category]: value,
-    }));
+    updateState({
+      variants: {
+        ...state.variants,
+        [category]: value,
+      },
+    });
   };
 
-  const handleQuantityChange = (newQuantity: number) => {
-    setQuantity(newQuantity);
+  const handleQuantityChange = (quantity: number) => {
+    updateState({ quantity });
+  };
+
+  const handleImageChange = (imageIndex: number) => {
+    updateState({ imageIndex });
   };
 
   return {
-    selectedProductId,
+    selectedProductId: state.productId,
     currentProduct,
-    selectedVariants,
+    selectedVariants: state.variants,
     currentImages,
     currentPrice,
-    quantity,
+    quantity: state.quantity,
+    imageIndex: state.imageIndex,
     handleProductChange,
     handleVariantChange,
     handleQuantityChange,
+    handleImageChange,
+    isLoaded,
   };
 };

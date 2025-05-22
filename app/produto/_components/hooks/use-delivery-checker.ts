@@ -21,7 +21,7 @@ export const useDeliveryChecker = () => {
   };
 
   const generateDeliveryEstimate = (cepCode: string): string => {
-    // Cálculo determinístico baseado no CEP (evita problemas de hidratação)
+    // Cálculo determinístico baseado no CEP
     const cepSum = cepCode
       .split("")
       .reduce((sum, digit) => sum + (parseInt(digit) || 0), 0);

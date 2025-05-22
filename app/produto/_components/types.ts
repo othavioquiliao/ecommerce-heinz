@@ -21,6 +21,14 @@ export interface ProductVariants {
   tipo: string;
 }
 
+// Estado completo que será persistido
+export interface ProductState {
+  productId: string;
+  variants: ProductVariants;
+  quantity: number;
+  imageIndex: number;
+}
+
 export interface AddressData {
   cep: string;
   logradouro: string;
