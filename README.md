@@ -14,7 +14,9 @@
 
 ## 📋 Sobre o Projeto
 
-Este é um **e-commerce moderno e responsivo** desenvolvido especificamente para a marca **Heinz**, oferecendo uma experiência de compra fluida e interativa para produtos como ketchups, maioneses e mostardas. O projeto combina design moderno com funcionalidades avançadas de um e-commerce completo.
+Desde a página inicial até o tema do desafio, tudo foi inspirado em um [video do Youtube](https://www.youtube.com/shorts/JoDZJgpReFE). <br/> Meu objetivo foi demonstrar como é possível transformar uma ideia de design em realidade por meio de um site funcional.
+
+
 
 ### ✨ Principais Características
 
