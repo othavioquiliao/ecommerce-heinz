@@ -20,44 +20,40 @@ Este é um **e-commerce moderno e responsivo** desenvolvido especificamente para
 
 - 🎨 **Interface moderna** com animações suaves
 - 📱 **Totalmente responsivo** para todos os dispositivos
-- 🛍️ **Sistema completo de carrinho** de compras
 - 🖼️ **Galeria interativa** de imagens dos produtos
 - 🎯 **Seleção de variantes** (tamanho, tipo)
 - 📦 **Verificador de entrega** por CEP
-- ⭐ **Sistema de avaliações** e reviews
-- 🌙 **Suporte a tema escuro/claro**
 - 🚀 **Performance otimizada** com Turbopack
-
 
 ## 🛠️ Tecnologias Utilizadas
 
 ### Frontend Framework
 
 - **⚡ Next.js 15.3.2** - Framework React com renderização server-side e otimizações automáticas
-  - __ Oferece renderização híbrida, otimização automática de imagens, roteamento eficiente e melhor SEO
+  - Oferece renderização híbrida, otimização automática de imagens, roteamento eficiente e melhor SEO
 
 ### UI & Styling
 
 - **🎨 Tailwind CSS 4.1.7** - Framework CSS utility-first para estilização rápida
-  - __ Desenvolvimento mais rápido, bundle menor e design system consistente
+  - Desenvolvimento mais rápido, bundle menor e design system consistente
 - **🎭 shadcn/ui** - Componentes UI modernos e acessíveis
-  - __ Componentes pré-construídos, altamente customizáveis e com boa acessibilidade
+  - Componentes pré-construídos, altamente customizáveis e com boa acessibilidade
 - **🌈 Radix UI** - Primitivos headless para componentes complexos
-  - __ Acessibilidade completa, comportamentos complexos já implementados
+  - Acessibilidade completa, comportamentos complexos já implementados
 
 ### Animações & Interações
 
 - **🎬 Framer Motion 12.12.1** - Biblioteca para animações fluidas
-  - __ Animações performáticas, gestos avançados e transições de página suaves
+  - Animações performáticas, gestos avançados e transições de página suaves
 - **✨ Lucide React** - Ícones modernos e consistentes
-  - __ Ícones otimizados em SVG, consistência visual e fácil customização
+  - Ícones otimizados em SVG, consistência visual e fácil customização
 
 ### Desenvolvimento & Qualidade
 
 - **📘 TypeScript 5.8.3** - Superset do JavaScript com tipagem estática
-  - __ Detecta erros em tempo de desenvolvimento, melhor IntelliSense e código mais robusto
+  - Detecta erros em tempo de desenvolvimento, melhor IntelliSense e código mais robusto
 - **🔍 ESLint** - Linter para manter qualidade do código
-  - __ Padronização de código, detecção de problemas e melhores práticas
+  - Padronização de código, detecção de problemas e melhores práticas
 
 ### Utilitários
 
@@ -70,15 +66,15 @@ Este é um **e-commerce moderno e responsivo** desenvolvido especificamente para
 ### Pré-requisitos
 
 - **Node.js** 18.17 ou superior
-- **pnpm** (recomendado) ou npm/yarn
+- **pnpm** (recomendado) ou npm/bun
 
 ### Instalação
 
 1. **Clone o repositório**
 
 ```bash
-git clone <url-do-repositorio>
-cd ecommerce
+git clone git@github.com:othavioquiliao/ecommerce-heinz.git
+cd ecommerce-heinz
 ```
 
 2. **Instale as dependências**
@@ -103,16 +99,6 @@ npm run dev
 http://localhost:3000
 ```
 
-### 📋 Scripts Disponíveis
-
-| Script       | Descrição                                             |
-| ------------ | ----------------------------------------------------- |
-| `pnpm dev`   | 🚀 Inicia o servidor de desenvolvimento com Turbopack |
-| `pnpm build` | 🏗️ Gera build de produção                             |
-| `pnpm start` | ▶️ Inicia servidor de produção                        |
-| `pnpm lint`  | 🔍 Executa linting do código                          |
-
-
 ## 🎯 Funcionalidades Principais
 
 ### 🏠 Landing Page
@@ -126,9 +112,9 @@ http://localhost:3000
 - **Galeria de Imagens**: Visualização interativa com múltiplas imagens
 - **Seleção de Variantes**: Escolha de tamanho, tipo e variedade
 - **Controle de Quantidade**: Seletor intuitivo respeitando estoque
-- **Adicionar ao Carrinho**: Sistema completo de gerenciamento
 - **Verificador de Entrega**: Consulta de disponibilidade por CEP
-- **Avaliações**: Sistema de ratings e reviews dos produtos
+
+## 🎨 Design System
 
 ### 🎨 Componentes UI
 
@@ -137,32 +123,10 @@ http://localhost:3000
 - Animações fluidas com **Framer Motion**
 - Notificações elegantes com **Sonner**
 
-
-## 🎨 Design System
-
-### 🎨 Paleta de Cores
-
-- **Background**: `#FAF8F4` (bege suave)
-- **Secundário**: `#f4f4f4` (cinza claro)
-- **Texto**: Baseado em tons de stone
-- **Destaque**: Vermelho Heinz para CTAs
-
 ### 📐 Responsividade
 
 - **Mobile First**: Design otimizado para dispositivos móveis
 - **Breakpoints**: Tailwind CSS padrão (sm, md, lg, xl, 2xl)
-
-
-## 🔧 Configuração Avançada
-
-### shadcn/ui
-
-O projeto utiliza o estilo **"new-york"** do shadcn/ui com:
-
-- **Base Color**: Stone
-- **CSS Variables**: Habilitado para temas dinâmicos
-- **RSC**: React Server Components ativado
-- **Icon Library**: Lucide React
 
 ### Tailwind CSS
 
