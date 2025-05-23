@@ -23,7 +23,6 @@ export default function ProductPage() {
     handleVariantChange,
     handleQuantityChange,
     handleImageChange,
-    isLoaded,
   } = useProductVariants();
 
   const { handleAddToCart: addToCart } = useCart();

@@ -74,7 +74,7 @@ export const useDeliveryChecker = () => {
           ),
         });
       }
-    } catch (error) {
+    } catch {
       toast.error(TOAST_MESSAGES.delivery.connectionError.title, {
         description: TOAST_MESSAGES.delivery.connectionError.description,
       });

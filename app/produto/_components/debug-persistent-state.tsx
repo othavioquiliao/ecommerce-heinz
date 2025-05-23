@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export function DebugPersistentState() {
-  const [debugData, setDebugData] = useState<any>({});
+  const [debugData, setDebugData] = useState<Record<string, unknown>>({});
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function DebugPersistentState() {
           } else {
             setDebugData({});
           }
-        } catch (e) {
+        } catch {
           setDebugData({});
         }
       }

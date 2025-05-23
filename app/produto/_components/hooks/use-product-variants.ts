@@ -1,5 +1,4 @@
 import { useState, useMemo, useEffect } from "react";
-import type { ProductItem } from "../types";
 import {
   getImagesBySize,
   getPriceBySize,
@@ -30,7 +29,13 @@ export const useProductVariants = () => {
         });
       }
     }
-  }, [isLoaded]);
+  }, [
+    isLoaded,
+    currentProduct,
+    state.variants.tamanho,
+    state.variants.tipo,
+    updateState,
+  ]);
 
   // Atualiza imagens quando produto ou tamanho muda
   useEffect(() => {

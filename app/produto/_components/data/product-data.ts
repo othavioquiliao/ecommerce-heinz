@@ -1,4 +1,4 @@
-import type { Product, ProductItem, SizeVariant } from "../types";
+import type { Product, ProductItem } from "../types";
 
 // Isso aqui e para fazer o mock do produto que esta sendo vendido
 export const productData: Product = [

@@ -32,8 +32,13 @@ const martianMono = Martian_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Heinz",
+  title: "Heinz e-commerce",
   description: "Teste de e-commerce Heinz",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -42,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifKhitanSmallScript.variable} ${martianMono.variable} antialiased`}
       >
